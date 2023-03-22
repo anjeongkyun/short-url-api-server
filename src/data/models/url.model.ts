@@ -5,14 +5,14 @@ export interface UrlDocument {
   originUrl: string;
   shortenedUrl: string;
   clickCount: number;
-  createAt: Date;
+  createdAt: Date;
 }
 
 export const urlSchema: Schema = new Schema({
   originUrl: { type: String, required: true },
   shortenedUrl: { type: String, required: true },
   clickCount: { type: Number, required: true },
-  createAt: { type: Date, required: true },
+  createdAt: { type: Date, required: true },
 });
 
 export const urlDataModel = model<UrlDocument>("urls", urlSchema, "urls");
