@@ -9,11 +9,13 @@ export class Url {
     originUrl: string,
     shortenedUrl: string,
     clickCount: number,
-    createdAt: string
+    createdAt: string,
+    id?: string
   ) {
     this.originUrl = originUrl;
     this.shortenedUrl = shortenedUrl;
     this.clickCount = clickCount;
     this.createdAt = createdAt;
+    this.id = id;
   }
 }
