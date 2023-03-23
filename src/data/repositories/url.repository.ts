@@ -12,7 +12,10 @@ export class UrlRepositoryImpl implements UrlRepository {
   private mapper: UrlDataMapper = new UrlDataMapper();
 
   getUrls(): Promise<Url[]> {
-    throw new Error("Method not implemented.");
+    return urlDataModel
+      .find()
+      .exec()
+      .then((documents) => documents.map(this.mapper.toEntity));
   }
 
   createUrl(url: Url): Promise<Url> {
