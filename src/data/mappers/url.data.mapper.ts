@@ -7,7 +7,6 @@ export class UrlDataMapper {
     return new Url(
       document.originUrl,
       document.shortenedUrl,
-      document.clickCount,
       document.createdAt.toISOString()
     );
   }
@@ -17,7 +16,6 @@ export class UrlDataMapper {
       _id: optional(entity.id, (it) => objectId(it)),
       originUrl: entity.originUrl,
       shortenedUrl: entity.shortenedUrl,
-      clickCount: entity.clickCount,
       createdAt: new Date(entity.createdAt),
     };
   }

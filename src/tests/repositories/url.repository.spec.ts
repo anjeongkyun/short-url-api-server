@@ -19,17 +19,12 @@ afterAll(async () => {
 
 describe("url-repository-test", () => {
   it.each([
-    [faker.internet.url(), faker.internet.url(), 0, new Date().toISOString()],
+    [faker.internet.url(), faker.internet.url(), new Date().toISOString()],
   ])(
     "sut correctly creates url",
-    async (originUrl, shortenedUrl, clickCount, createdAt) => {
+    async (originUrl, shortenedUrl, createdAt) => {
       //Arrange
-      const creatingUrl: Url = new Url(
-        originUrl,
-        shortenedUrl,
-        clickCount,
-        createdAt
-      );
+      const creatingUrl: Url = new Url(originUrl, shortenedUrl, createdAt);
 
       //Act
       const createdUrl: Url = await getSut().createUrl(creatingUrl);
@@ -38,7 +33,6 @@ describe("url-repository-test", () => {
       expect(createdUrl).not.toBeNull();
       expect(createdUrl.originUrl).toStrictEqual(originUrl);
       expect(createdUrl.shortenedUrl).toStrictEqual(shortenedUrl);
-      expect(createdUrl.clickCount).toStrictEqual(clickCount);
       expect(createdUrl.createdAt).toStrictEqual(createdAt);
     }
   );
@@ -49,21 +43,18 @@ describe("url-repository-test", () => {
         new Url(
           faker.internet.url(),
           faker.internet.url(),
-          0,
           new Date().toISOString(),
           new mongoose.Types.ObjectId().toString()
         ),
         new Url(
           faker.internet.url(),
           faker.internet.url(),
-          0,
           new Date().toISOString(),
           new mongoose.Types.ObjectId().toString()
         ),
         new Url(
           faker.internet.url(),
           faker.internet.url(),
-          0,
           new Date().toISOString(),
           new mongoose.Types.ObjectId().toString()
         ),
