@@ -4,6 +4,7 @@ import { UrlDataMapper } from "../mappers/url.data.mapper";
 
 export interface UrlRepository {
   getUrls(): Promise<Url[]>;
+  getUrl(shortenedUrl: string): Promise<Url>;
   createUrl(url: Url): Promise<Url>;
 }
 
@@ -18,9 +19,14 @@ export class UrlRepositoryImpl implements UrlRepository {
       .then((documents) => documents.map(this.mapper.toEntity));
   }
 
-  createUrl(url: Url): Promise<Url> {
+  getUrl(shortenedUrl: string): Promise<Url> {
     return urlDataModel
-      .create(url)
-      .then((document) => this.mapper.toEntity(document));
+      .findOne({ shortenedUrl })
+      .exec()
+      .then(this.mapper.toEntity);
+  }
+
+  createUrl(url: Url): Promise<Url> {
+    return urlDataModel.create(url).then(this.mapper.toEntity);
   }
 }
