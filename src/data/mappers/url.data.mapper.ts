@@ -7,7 +7,8 @@ export class UrlDataMapper {
     return new Url(
       document.originUrl,
       document.shortenedUrl,
-      document.createdAt.toISOString()
+      document.createdAt.toISOString(),
+      document._id.toString()
     );
   }
 
