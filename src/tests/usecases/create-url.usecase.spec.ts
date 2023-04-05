@@ -1,4 +1,4 @@
-import { CreateUrlCommand } from "@/contract/create-url.command";
+import { CreateUrlCommand } from "@/contract/commands/create-url.command";
 import { UrlRepositoryImpl } from "@/data/repositories/url.repository";
 import { Url } from "@/entities/url";
 import { clear, close, connect } from "@/tests/settings/database";
@@ -34,9 +34,7 @@ describe("create-url-usecase-test", () => {
       expect(createdUrl.originUrl).toStrictEqual(originUrl);
     }
   );
-});
 
-describe("create-url-usecase-test", () => {
   it.each([[faker.random.alpha(10)]])(
     "sut throws Error when originUrl is invalid",
     async (originUrl) => {

@@ -1,5 +1,5 @@
 import { UsecaseContext } from "@/contexts";
-import { CreateUrlCommand } from "@/contract/create-url.command";
+import { CreateUrlCommand } from "@/contract/commands/create-url.command";
 import { Url } from "@/entities/url";
 import { CreateUrlUsecase } from "@/usecases/create-url.usecase";
 import { NextFunction, Request, Response } from "express";
