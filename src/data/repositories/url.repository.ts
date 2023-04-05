@@ -9,7 +9,6 @@ export interface UrlRepository {
 }
 
 export class UrlRepositoryImpl implements UrlRepository {
-  constructor() {}
   private mapper: UrlDataMapper = new UrlDataMapper();
 
   getUrls(): Promise<Url[]> {
