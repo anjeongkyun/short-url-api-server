@@ -13,5 +13,6 @@ export class UrlRoute implements Route {
 
   private initializeRoutes() {
     this.router.post("/urls/commands/create-url", this.controller.createUrl);
+    this.router.post("/urls/queries/get-url", this.controller.getUrl);
   }
 }
