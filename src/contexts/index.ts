@@ -3,6 +3,7 @@ import {
   UrlRepositoryImpl,
 } from "@/data/repositories/url.repository";
 import { CreateUrlUsecase } from "@/usecases/create-url.usecase";
+import { GetUrlUsecase } from "@/usecases/get-url.usecase";
 class RepositoryContext {
   urlRepository: UrlRepository;
   constructor() {
@@ -12,10 +13,12 @@ class RepositoryContext {
 
 export class UsecaseContext {
   createUrlUsecase: CreateUrlUsecase;
+  getUrlUsecase: GetUrlUsecase;
   constructor(repositoryContext: RepositoryContext) {
     this.createUrlUsecase = new CreateUrlUsecase(
       repositoryContext.urlRepository
     );
+    this.getUrlUsecase = new GetUrlUsecase(repositoryContext.urlRepository);
   }
 }
 
