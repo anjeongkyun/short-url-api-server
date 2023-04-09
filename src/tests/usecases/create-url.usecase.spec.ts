@@ -35,27 +35,30 @@ describe("create-url-usecase-test", () => {
     }
   );
 
-  it.each([[faker.random.alpha(10)]])(
-    "sut throws Error when originUrl is invalid",
-    async (originUrl) => {
-      //Arrange
-      const command: CreateUrlCommand = {
-        originUrl,
-      };
+  it.each([
+    [faker.random.alpha(10)],
+    ["~!@#$%"],
+    ["jeongkyun.com"],
+    ["w2w.jeongkyun.com"],
+    ["http://www.jeongkyun,com"],
+  ])("sut throws Error when originUrl is invalid", async (originUrl) => {
+    //Arrange
+    const command: CreateUrlCommand = {
+      originUrl,
+    };
 
-      //Act
-      let actual = null;
-      try {
-        await getSut().execute(command);
-      } catch (err) {
-        actual = err;
-      }
-
-      //Assert
-      expect(actual).not.toBeNull();
-      expect(actual).toBeInstanceOf(Error);
+    //Act
+    let actual = null;
+    try {
+      await getSut().execute(command);
+    } catch (err) {
+      actual = err;
     }
-  );
+
+    //Assert
+    expect(actual).not.toBeNull();
+    expect(actual).toBeInstanceOf(Error);
+  });
 });
 
 const getSut = (): CreateUrlUsecase => {

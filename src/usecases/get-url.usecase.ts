@@ -15,8 +15,15 @@ export class GetUrlUsecase {
   }
 
   private validateUrl = (shortenedUrl: string): void => {
-    const urlRegex =
-      /^(http(s)?\:\/\/)?[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,}(:[0-9]+)?(\/\S*)?$/;
+    const urlRegex = new RegExp(
+      "^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$", // fragment locator
+      "i"
+    );
 
     if (!urlRegex.test(shortenedUrl)) {
       throw new Error("invalid url");
