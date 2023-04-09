@@ -1,9 +1,9 @@
 import { UsecaseContext } from "@/contexts";
-import { CreateUrlCommand } from "@/contract/commands/create-url.command";
+import { CreateUrlCommand } from "@/contracts/commands/create-url.command";
 import { Url } from "@/entities/url";
 import { CreateUrlUsecase } from "@/usecases/create-url.usecase";
 import { NextFunction, Request, Response } from "express";
-import { GetUrlQuery } from "@/contract/queries/get-url.query";
+import { GetUrlQuery } from "@/contracts/queries/get-url.query";
 import { GetUrlUsecase } from "@/usecases/get-url.usecase";
 
 export class UrlController {

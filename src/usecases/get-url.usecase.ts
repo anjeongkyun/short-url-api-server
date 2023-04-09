@@ -1,4 +1,4 @@
-import { GetUrlQuery } from "@/contract/queries/get-url.query";
+import { GetUrlQuery } from "@/contracts/queries/get-url.query";
 import { UrlRepository } from "@/data/repositories/url.repository";
 import { Url } from "@/entities/url";
 

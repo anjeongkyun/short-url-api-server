@@ -1,4 +1,4 @@
-import { CreateUrlCommand } from "@/contract/commands/create-url.command";
+import { CreateUrlCommand } from "@/contracts/commands/create-url.command";
 import { UrlRepositoryImpl } from "@/data/repositories/url.repository";
 import { Url } from "@/entities/url";
 import { clear, close, connect } from "@/tests/settings/database";
