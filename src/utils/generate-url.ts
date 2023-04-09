@@ -11,7 +11,7 @@ export const generateShortUrl = (originalUrl: string): string => {
     extractProtocol(originalUrl) +
     domain +
     "/" +
-    randomSortingUrl(shortUrl, SHORTENED_URL_LENGTH)
+    sortRandomUrl(shortUrl, SHORTENED_URL_LENGTH)
   );
 };
 
@@ -21,7 +21,7 @@ const encodeBase64Url = (buffer: Buffer): string => {
   return base64;
 };
 
-const randomSortingUrl = (shortUrl: string, length: number): string => {
+const sortRandomUrl = (shortUrl: string, length: number): string => {
   let result = "";
   Array.from({ length }, () => {
     result += shortUrl.charAt(Math.floor(Math.random() * shortUrl.length));
